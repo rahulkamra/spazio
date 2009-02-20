@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute">
+
+	<mx:Canvas   x="774" y="152">
+	<mx:ModuleLoader   url="Login/LoginModule.swf">
+	</mx:ModuleLoader>
+	</mx:Canvas>
+	
+</mx:Application>
