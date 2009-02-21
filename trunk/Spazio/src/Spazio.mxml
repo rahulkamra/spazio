@@ -2,7 +2,7 @@
 <mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute">
 
 	<mx:Canvas   x="774" y="152">
-	<mx:ModuleLoader   url="Login/LoginModule.swf">
+	<mx:ModuleLoader   url="com/satyam/spazio/loginReg/LoginModule.swf">
 	</mx:ModuleLoader>
 	</mx:Canvas>
 	

@@ -19,7 +19,7 @@
 		<link>
 			<name>bin-debug</name>
 			<type>2</type>
-			<location>C:/Users/kaal/Documents/NetBeansProjects/Spazio/web</location>
+			<location>//192.168.1.100/Spazio/web</location>
 		</link>
 	</linkedResources>
 </projectDescription>
