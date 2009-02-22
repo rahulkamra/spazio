@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Module xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" creationComplete="init()">
+<mx:Metadata>
+	[Event(name="RegistrationEvent",type="com.satyam.spazio.loginReg.RegistrationEvent")]
+</mx:Metadata>
+<mx:RemoteObject id="ro_register" destination="doRegister" result="registerSuccess(event)"/>
+
+<mx:Script>
+	<![CDATA[
+		
+		import com.satyam.spazio.loginReg.RegistrationBean;
+		import mx.rpc.events.FaultEvent;
+		import mx.rpc.events.ResultEvent;
+		import mx.controls.Alert;
+		
+		
+		public function init():void{
+			var myRef:LoginModule=LoginModule(this);
+			myRef.addEventListener(RegistrationEvent._REGISTRATION_EVENT,click);
+			
+			//this.addEventListener(RegistrationEvent.REGISTRATION_EVENT,click)
+			
+			//this.dispatchEvent(new RegistrationEvent("RegistrationEvent",new RegistrationBean()))
+		}
+		public function click(event):void{
+			Alert.show(event.registrationBean)
+			Alert.show(this.parentApplication.toString())	
+		}
+		public function callRegister():void{
+			Alert.show("Hiii");
+			
+			var registrationBean:RegistrationBean= new RegistrationBean();
+			
+			registrationBean.username=username.text;
+			registrationBean.password=password.text;
+			registrationBean.email=email.text;
+			
+			ro_register.registerAction(registrationBean);
+		}
+		public function registerSuccess(e:ResultEvent):void{
+			Alert.show(e.result.toString())
+		}
+		public function registerFail(e:FaultEvent):void{
+			
+		}
+		
+	]]>
+</mx:Script>
+
+	<mx:states>
+		<mx:State name="register">
+			<mx:SetProperty name="height" value="338"/>
+			<mx:SetProperty target="{panel1}" name="y" value="0"/>
+			<mx:SetProperty target="{panel1}" name="height" value="334"/>
+			<mx:RemoveChild target="{linkbutton1}"/>
+			<mx:RemoveChild target="{login}"/>
+			<mx:AddChild relativeTo="{label1}" position="before">
+				<mx:TextInput x="105" y="106" width="116" id="confirmPwd"/>
+			</mx:AddChild>
+			<mx:AddChild relativeTo="{label1}" position="before">
+				<mx:Label x="36" y="69" text="Password" height="22" width="61" id="label3"/>
+			</mx:AddChild>
+			<mx:SetProperty target="{label2}" name="y" value="108"/>
+			<mx:AddChild relativeTo="{label3}" position="before">
+				<mx:TextInput x="105" y="150" width="116" id="email"/>
+			</mx:AddChild>
+			<mx:AddChild relativeTo="{label3}" position="before">
+				<mx:Label x="57" y="152" text="Email" height="22" width="40"/>
+			</mx:AddChild>
+			<mx:AddChild relativeTo="{canvas1}" position="lastChild">
+				<mx:RadioButtonGroup id="gender"/>
+			</mx:AddChild>
+			<mx:AddChild relativeTo="{canvas1}" position="lastChild">
+				<mx:LinkButton x="10" y="262" label="Login" click="this.parentApplication.currentState=''"/>
+			</mx:AddChild>
+			<mx:AddChild relativeTo="{canvas1}" position="lastChild">
+				<mx:Button x="79" y="208" label="Register" id="register" click="callRegister()"/>
+			</mx:AddChild>
+			<mx:SetProperty target="{label2}" name="text" value="Confirm Pwd"/>
+			<mx:SetProperty target="{label2}" name="width" value="81"/>
+			<mx:SetProperty target="{label1}" name="x" value="26"/>
+			<mx:SetProperty name="width" value="254"/>
+		</mx:State>
+	</mx:states>
+
+	<mx:Panel width="252" height="250" id="panel1">
+		<mx:Canvas width="100%" height="100%" id="canvas1">
+			<mx:Button x="105" y="114" label="Login" click="click(event)" id="login"/>
+			<mx:TextInput x="105" y="28" width="117" id="username"/>
+			<mx:TextInput x="105" y="69" width="116" id="password"/>
+			<mx:Label x="16" y="30" text="Username" width="71" id="label1"/>
+			<mx:Label x="16" y="69" text="Password" height="22" width="71" id="label2"/>
+			<mx:LinkButton x="10" y="178" label="Signup" click="this.currentState='register'" id="linkbutton1"/>
+			
+		</mx:Canvas>
+	</mx:Panel>
+</mx:Module>
