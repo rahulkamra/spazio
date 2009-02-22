@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexProperties flexServerType="2" serverContextRoot="/Spazio" serverRoot="//192.168.1.100/Spazio/web" serverRootURL="http://localhost:8400/Spazio" toolCompile="true" useServerFlexSDK="false" version="1"/>
